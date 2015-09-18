@@ -14,6 +14,7 @@ class MenuController
         puts "3 - Search for an entry"
         puts "4 - Import entries from a CSV"
         puts "5 - Exit"
+        puts "6 - NUKE"
         puts "Enter your selection: "
         
         selection = gets.to_i
@@ -39,7 +40,11 @@ class MenuController
         when 5
            puts "Good-bye!"
            exit(0)
-         else
+        when 6
+            system "clear"
+            trash_address_book
+            main_menu
+        else
            system "clear"
            puts "Sorry, that is not a valid input"
            main_menu
@@ -175,5 +180,10 @@ class MenuController
         system "clear"
         puts "Updated entry:"
         puts entry
+    end
+    
+    def trash_address_book
+        @address_book.entries = []
+        puts "AddressBook has sustained radiation poisoning"
     end
 end
